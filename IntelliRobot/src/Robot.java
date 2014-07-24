@@ -24,7 +24,7 @@ public class Robot {
 		
 		// Movimiento de vuelta en eje x
 		if (x < 0){
-			xVelocity = 10;
+			xVelocity = 20;
 		} else if (x + size > 400) {
 			xVelocity = -10;
 		}
@@ -32,12 +32,13 @@ public class Robot {
 		// Movimiento de vuelta en eje y
 		if (y < 0){
 			yVelocity = 10;
-		} else if (y + size > 400) {
-			yVelocity = -10;
+		} else if (y + size > 360) {
+			yVelocity = -20;
+		}		
+		
+		for (int i = 0; i < array.length; i++) {
+			
 		}
-		
-		//COntrola si choca con un obstaculo
-		
 	}
 	
 	/**

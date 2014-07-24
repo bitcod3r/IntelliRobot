@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements ActionListener {
 		creaObs();
 		
 		//Crear Timer para que cada 50 milisegundos anime al robot 
-		tim = new Timer(50, this);
+		tim = new Timer(100, this);
 				
 		//Agregar el boton PLAY
 		JButton btnPlay = new JButton("PLAY");
@@ -85,7 +85,6 @@ public class GamePanel extends JPanel implements ActionListener {
 		for (int i = 0; i < 10; i++) {
 			obstaculos[i].paint(g);
 		}
-		
 		
 		walkingRobot.paint(g);
 	}	
