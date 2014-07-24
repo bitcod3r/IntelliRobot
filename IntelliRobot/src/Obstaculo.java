@@ -16,6 +16,5 @@ public class Obstaculo {
 	public void paint(Graphics g) {
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(xPos, yPos, size, size);
-		//
 	}
 }

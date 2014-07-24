@@ -1,5 +1,10 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 
 public class Robot {
@@ -11,7 +16,7 @@ public class Robot {
 	private int yVelocity = 10;
 	
 	//Size of the robot
-	private int size = 10;
+	private int size = 20;
 	
 	public void update() {
 		x = x + xVelocity;
@@ -31,13 +36,30 @@ public class Robot {
 			yVelocity = -10;
 		}
 		
+		//COntrola si choca con un obstaculo
+		
 	}
 	
+	/**
+	 * Trae la imagen desde el top de la aplicacion,  
+	 * si que no la encuentra dibuja un circulo verde.
+	 * @param g
+	 */
 	public void paint(Graphics g) {
 		
-		g.setColor(Color.GREEN);
-		g.fillOval(x, y, size, size);
-		//
+		Image imagen;
+		try {
+			imagen = ImageIO.read(     new File("robot.jpg")      );
+			g.drawImage(imagen, x, y, null);
+		} catch (IOException e) {
+			//e.printStackTrace();
+			g.setColor(Color.GREEN);
+			g.fillOval(x, y, size, size);
+		}
+        
+        
 	}
+
+
 
 }

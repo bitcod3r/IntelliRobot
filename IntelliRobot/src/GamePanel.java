@@ -3,7 +3,9 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
 import javax.swing.Timer;
 
 
@@ -16,32 +18,53 @@ public class GamePanel extends JPanel implements ActionListener {
 	int[] yCoords = {60,340,120,300,240,160,40,340,180,320};
 	Obstaculo[] obstaculos = new Obstaculo[10];
 	
-	/*
-	List<Integer> myCoords = new ArrayList<Integer>();
-	myCoords.add(10);
-	myCoords.add(20);
-	myCoords.add(30);
-	myCoords.add(40);
-	myCoords.add(50);
+	Timer tim;
 	
-	Iterator<Integer> myListIterator = myCoords.iterator(); 
-	while (myListIterator.hasNext()) {
-	    Integer coord = myListIterator.next();     
-	    System.out.print("\r");
-	    System.out.print(coord);
-	    Thread.sleep(2000);
-	}
-	*/
 	public GamePanel(){
 
 		//Crear Obstaculos
 		creaObs();
 		
 		//Crear Timer para que cada 50 milisegundos anime al robot 
-		Timer tim = new Timer(50, this);
+		tim = new Timer(50, this);
+				
+		//Agregar el boton PLAY
+		JButton btnPlay = new JButton("PLAY");
+		btnPlay.setBounds(200, 421, 70, 23);
+		btnPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				startGame();
+			}
+		});
+		
+		//Agregar el boton STOP
+		JButton btnStop = new JButton("STOP");
+		btnStop.setBounds(280, 421, 70, 23);
+		btnStop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				stopGame();
+			}
+		});
+		
+		JTextPane txtEtiqueta = new JTextPane();
+		txtEtiqueta.setEditable(false);
+		txtEtiqueta.setText("UNIANDES\r\nInteligencia Artificial\r\nJuan Guillermo Garc\u00EDa");
+		txtEtiqueta.setBounds(10, 404, 138, 57);
+		
+		add(txtEtiqueta);
+		add(btnPlay);
+		add(btnStop);
+		setLayout(null);
+	}
+	
+	public void startGame() {
 		tim.start();
 	}
 	
+	public void stopGame() {
+		tim.stop();
+	}
+
 	public void creaObs() {
 		
 		for (int i = 0; i < 10; i++) {
